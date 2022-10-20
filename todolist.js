@@ -32,7 +32,7 @@ function CreateNewItem(name)
     var complete = document.createElement('Button');
         complete.classList.add("Button", "CompButton", "Complete");
         complete.innerHTML = '<i class="fa-solid fa-check"></i>';
-        complete.onclick = () => Complete(item, complete);
+        complete.onclick = () => OnComplete(item, complete);
         item.appendChild(complete); 
 
     return item; 
@@ -49,20 +49,20 @@ function Edit(Paragraph, Text)
     Paragraph.innerHTML = Text; 
 }
 
-function Complete(Paragraph, complete)
+function OnComplete(Paragraph, complete)
 {
     CrossTextOut(Paragraph, true)
     ChangeCompleteStyle(complete, true);
 
-    complete.onclick = () => Incomplete(Paragraph, complete);
+    complete.onclick = () => OnIncomplete(Paragraph, complete);
 }
 
-function Incomplete(Paragraph, complete)
+function OnIncomplete(Paragraph, complete)
 {
     CrossTextOut(Paragraph, false);
     ChangeCompleteStyle(complete, false);
 
-    complete.onclick = () => Complete(Paragraph, complete);
+    complete.onclick = () => OnComplete(Paragraph, complete);
 }
 
 function CrossTextOut(P, change)
